@@ -15,13 +15,23 @@ class ViewController: UIViewController {
     var thirdContainer: UIView!
     var fourthContainer: UIView!
     
+    var titleLabel: UILabel!
+    
     let kMarginForView: CGFloat = 10.0
     let kSixth: CGFloat = 1.0/6.0
+    let kThird: CGFloat = 1.0/3.0
+    
+    let kNumberOfContainers = 3
+    let kNumberOfSlots = 3
+    let kMarginForSLot:CGFloat = 2.0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupContainerViews()
+        setupFirstContainer(self.firstContainer)
+        setupSecondContainer(self.secondContainer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +55,27 @@ class ViewController: UIViewController {
         self.fourthContainer = UIView(frame: CGRect(x: self.view.bounds.origin.x + kMarginForView, y: self.firstContainer.frame.height + self.secondContainer.frame.height + self.thirdContainer.frame.height, width: self.view.bounds.width - kMarginForView * 2, height: self.view.bounds.height * kSixth))
         self.fourthContainer.backgroundColor = UIColor.blackColor()
         self.view.addSubview(self.fourthContainer)
+    }
+    
+    func setupFirstContainer(containerView: UIView) {
+        self.titleLabel = UILabel()
+        self.titleLabel.text = "Super Slot"
+        self.titleLabel.textColor = UIColor.yellowColor()
+        self.titleLabel.font = UIFont(name: "MarkerFelt-wide", size: 40)
+        self.titleLabel.sizeToFit()
+        self.titleLabel.center = containerView.center
+        containerView.addSubview(self.titleLabel)
+    }
+    
+    func setupSecondContainer(containerView: UIView) {
+        for var containerNumber = 0; containerNumber < kNumberOfContainers; containerNumber++ {
+            for var slotNumber = 0; slotNumber < kNumberOfSlots; slotNumber++ {
+                var slotImageView = UIImageView()
+                slotImageView.backgroundColor = UIColor.yellowColor()
+                slotImageView.frame = CGRect(x: containerView.bounds.origin.x + containerView.bounds.width * CGFloat(containerNumber) * kThird, y: containerView.bounds.origin.y + containerView.bounds.height * CGFloat(slotNumber) * kThird, width: containerView.bounds.width * kThird - kMarginForSLot, height: containerView.bounds.height * kThird - kMarginForSLot)
+                containerView.addSubview(slotImageView)
+            }
+        }
     }
 
 

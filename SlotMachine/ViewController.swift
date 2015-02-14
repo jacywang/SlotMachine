@@ -41,15 +41,20 @@ class ViewController: UIViewController {
     let kNumberOfSlots = 3
     let kMarginForSLot:CGFloat = 2.0
     
+    var slots: [[Slot]] = []
+    
+    var credits = 0
+    var currentBet = 0
+    var winnings = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupContainerViews()
         setupFirstContainer(self.firstContainer)
-        setupSecondContainer(self.secondContainer)
         setupThirdContainer(self.thirdContainer)
         setupFourthContainer(self.fourthContainer)
+        hardReset()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,7 +63,7 @@ class ViewController: UIViewController {
     }
     
     func resetButtonPressed(button: UIButton) {
-        println("resetButtonPressed!")
+        hardReset()
     }
     
     func betOneButtonPressed(button: UIButton) {
@@ -70,7 +75,9 @@ class ViewController: UIViewController {
     }
     
     func spinButtonPressed(button: UIButton) {
-        println(button)
+        removeSlotImageViews()
+        slots = Factory.createSlots()
+        self.setupSecondContainer(self.secondContainer)
     }
     
     func setupContainerViews() {
@@ -105,6 +112,13 @@ class ViewController: UIViewController {
         for var containerNumber = 0; containerNumber < kNumberOfContainers; containerNumber++ {
             for var slotNumber = 0; slotNumber < kNumberOfSlots; slotNumber++ {
                 var slotImageView = UIImageView()
+                
+                if slots.count != 0 {
+                    slotImageView.image = slots[containerNumber][slotNumber].image
+                } else {
+                    slotImageView.image = UIImage(named: "Ace")
+                }
+                
                 slotImageView.backgroundColor = UIColor.yellowColor()
                 slotImageView.frame = CGRect(x: containerView.bounds.origin.x + containerView.bounds.width * CGFloat(containerNumber) * kThird, y: containerView.bounds.origin.y + containerView.bounds.height * CGFloat(slotNumber) * kThird, width: containerView.bounds.width * kThird - kMarginForSLot, height: containerView.bounds.height * kThird - kMarginForSLot)
                 containerView.addSubview(slotImageView)
@@ -212,6 +226,33 @@ class ViewController: UIViewController {
         self.spinButton.center = CGPoint(x: containerView.frame.width * kEighth * 7, y: containerView.frame.height * kHalf)
         self.spinButton.addTarget(self, action: "spinButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         containerView.addSubview(self.spinButton)
+    }
+    
+    func removeSlotImageViews() {
+        if self.secondContainer != nil {
+            let container: UIView? = self.secondContainer
+            let subViews: Array? = container!.subviews
+            for view in subViews! {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
+    func hardReset() {
+        removeSlotImageViews()
+        slots.removeAll(keepCapacity: true)
+        self.setupSecondContainer(self.secondContainer)
+        credits = 50
+        currentBet = 0
+        winnings = 0
+        
+        updateMainView()
+    }
+    
+    func updateMainView() {
+        self.creditsLabel.text = "\(credits)"
+        self.betLabel.text = "\(currentBet)"
+        self.winnerLabel.text = "\(winnings)"
     }
 
 

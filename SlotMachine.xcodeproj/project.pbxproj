@@ -13,6 +13,8 @@
 		9C2CAC3C1A8AE15C00685FC2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2CAC3B1A8AE15C00685FC2 /* Images.xcassets */; };
 		9C2CAC3F1A8AE15C00685FC2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C2CAC3D1A8AE15C00685FC2 /* LaunchScreen.xib */; };
 		9C2CAC4B1A8AE15C00685FC2 /* SlotMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CAC4A1A8AE15C00685FC2 /* SlotMachineTests.swift */; };
+		9C2CAC551A8CE40700685FC2 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CAC541A8CE40700685FC2 /* Slot.swift */; };
+		9C2CAC571A8D7A6800685FC2 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CAC561A8D7A6800685FC2 /* Factory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		9C2CAC441A8AE15C00685FC2 /* SlotMachineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlotMachineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2CAC491A8AE15C00685FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C2CAC4A1A8AE15C00685FC2 /* SlotMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotMachineTests.swift; sourceTree = "<group>"; };
+		9C2CAC541A8CE40700685FC2 /* Slot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
+		9C2CAC561A8D7A6800685FC2 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +83,10 @@
 			children = (
 				9C2CAC341A8AE15C00685FC2 /* AppDelegate.swift */,
 				9C2CAC361A8AE15C00685FC2 /* ViewController.swift */,
+				9C2CAC541A8CE40700685FC2 /* Slot.swift */,
 				9C2CAC381A8AE15C00685FC2 /* Main.storyboard */,
 				9C2CAC3B1A8AE15C00685FC2 /* Images.xcassets */,
+				9C2CAC561A8D7A6800685FC2 /* Factory.swift */,
 				9C2CAC3D1A8AE15C00685FC2 /* LaunchScreen.xib */,
 				9C2CAC321A8AE15C00685FC2 /* Supporting Files */,
 			);
@@ -212,7 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C2CAC571A8D7A6800685FC2 /* Factory.swift in Sources */,
 				9C2CAC371A8AE15C00685FC2 /* ViewController.swift in Sources */,
+				9C2CAC551A8CE40700685FC2 /* Slot.swift in Sources */,
 				9C2CAC351A8AE15C00685FC2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +415,7 @@
 				9C2CAC501A8AE15C00685FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C2CAC511A8AE15C00685FC2 /* Build configuration list for PBXNativeTarget "SlotMachineTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +424,7 @@
 				9C2CAC531A8AE15C00685FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

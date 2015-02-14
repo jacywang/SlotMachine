@@ -99,6 +99,13 @@ class ViewController: UIViewController {
         removeSlotImageViews()
         slots = Factory.createSlots()
         self.setupSecondContainer(self.secondContainer)
+        
+        var winningsMultiplier = SlotBrain.computeWinnings(slots)
+        winnings = winningsMultiplier * currentBet
+        currentBet = 0
+        credits += winnings
+        
+        updateMainView()
     }
     
     func setupContainerViews() {

@@ -67,7 +67,17 @@ class ViewController: UIViewController {
     }
     
     func betOneButtonPressed(button: UIButton) {
-        println("betOneButtonPressed!")
+        if self.credits <= 0 {
+            showAlertWithText(header: "No More Credits", message: "Reset Game")
+        } else {
+            if currentBet < 5 {
+                credits -= 1
+                currentBet += 1
+                updateMainView()
+            } else {
+                showAlertWithText(message: "You can only bet five credits at a time!")
+            }
+        }
     }
     
     func betMaxButtonPressed(button: UIButton) {
@@ -254,7 +264,11 @@ class ViewController: UIViewController {
         self.betLabel.text = "\(currentBet)"
         self.winnerLabel.text = "\(winnings)"
     }
-
-
+    
+    func showAlertWithText(header: String = "Warning", message : String ) {
+        var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
